@@ -1,0 +1,34 @@
+---
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: provider-gcp-compute
+  labels:
+    app.kubernetes.io/managed-by: argocd
+    provider: gcp
+spec:
+  package: xpkg.upbound.io/upbound/provider-gcp-compute:v1.0.0
+  packagePullPolicy: IfNotPresent
+---
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: provider-gcp-sql
+  labels:
+    app.kubernetes.io/managed-by: argocd
+    provider: gcp
+spec:
+  package: xpkg.upbound.io/upbound/provider-gcp-sql:v1.0.0
+  packagePullPolicy: IfNotPresent
+---
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: provider-gcp-storage
+  labels:
+    app.kubernetes.io/managed-by: argocd
+    provider: gcp
+spec:
+  package: xpkg.upbound.io/upbound/provider-gcp-storage:v1.0.0
+  packagePullPolicy: IfNotPresent
+

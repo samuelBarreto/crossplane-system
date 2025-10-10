@@ -1,0 +1,64 @@
+---
+# IMPORTANTE: Este arquivo é um template. Configure as credenciais Azure usando External Secrets ou Sealed Secrets
+apiVersion: v1
+kind: Secret
+metadata:
+  name: azure-credentials
+  namespace: crossplane-system
+  labels:
+    app.kubernetes.io/managed-by: external-secrets
+type: Opaque
+stringData:
+  credentials: |
+    {
+      "clientId": "${AZURE_CLIENT_ID}",
+      "clientSecret": "${AZURE_CLIENT_SECRET}",
+      "subscriptionId": "${AZURE_SUBSCRIPTION_ID}",
+      "tenantId": "${AZURE_TENANT_ID}"
+    }
+---
+apiVersion: azure.upbound.io/v1beta1
+kind: ProviderConfig
+metadata:
+  name: azure-default
+  labels:
+    environment: shared
+    app.kubernetes.io/managed-by: argocd
+spec:
+  credentials:
+    source: Secret
+    secretRef:
+      namespace: crossplane-system
+      name: azure-credentials
+      key: credentials
+---
+apiVersion: azure.upbound.io/v1beta1
+kind: ProviderConfig
+metadata:
+  name: azure-dev
+  labels:
+    environment: dev
+    app.kubernetes.io/managed-by: argocd
+spec:
+  credentials:
+    source: Secret
+    secretRef:
+      namespace: crossplane-system
+      name: azure-credentials
+      key: credentials
+---
+apiVersion: azure.upbound.io/v1beta1
+kind: ProviderConfig
+metadata:
+  name: azure-prod
+  labels:
+    environment: prod
+    app.kubernetes.io/managed-by: argocd
+spec:
+  credentials:
+    source: Secret
+    secretRef:
+      namespace: crossplane-system
+      name: azure-credentials-prod
+      key: credentials
+

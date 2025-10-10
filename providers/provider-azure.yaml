@@ -1,0 +1,45 @@
+---
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: provider-azure-compute
+  labels:
+    app.kubernetes.io/managed-by: argocd
+    provider: azure
+spec:
+  package: xpkg.upbound.io/upbound/provider-azure-compute:v1.0.0
+  packagePullPolicy: IfNotPresent
+---
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: provider-azure-dbforpostgresql
+  labels:
+    app.kubernetes.io/managed-by: argocd
+    provider: azure
+spec:
+  package: xpkg.upbound.io/upbound/provider-azure-dbforpostgresql:v1.0.0
+  packagePullPolicy: IfNotPresent
+---
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: provider-azure-storage
+  labels:
+    app.kubernetes.io/managed-by: argocd
+    provider: azure
+spec:
+  package: xpkg.upbound.io/upbound/provider-azure-storage:v1.0.0
+  packagePullPolicy: IfNotPresent
+---
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: provider-azure-network
+  labels:
+    app.kubernetes.io/managed-by: argocd
+    provider: azure
+spec:
+  package: xpkg.upbound.io/upbound/provider-azure-network:v1.0.0
+  packagePullPolicy: IfNotPresent
+
