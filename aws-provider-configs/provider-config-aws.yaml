@@ -14,12 +14,47 @@
 # - Sealed Secrets
 # - ArgoCD Vault Plugin
 ---
-# ProviderConfig único para todos os ambientes (dev, prod, hlm)
+# ProviderConfig Default (usado por todos se não especificado)
 apiVersion: aws.upbound.io/v1beta1
 kind: ProviderConfig
 metadata:
-  name: default
+  name: aws-default
   labels:
+    environment: shared
+    app.kubernetes.io/managed-by: argocd
+    provider: aws
+spec:
+  credentials:
+    source: Secret
+    secretRef:
+      namespace: crossplane-system
+      name: aws-credentials
+      key: credentials
+---
+# ProviderConfig para ambiente Dev
+apiVersion: aws.upbound.io/v1beta1
+kind: ProviderConfig
+metadata:
+  name: aws-dev
+  labels:
+    environment: dev
+    app.kubernetes.io/managed-by: argocd
+    provider: aws
+spec:
+  credentials:
+    source: Secret
+    secretRef:
+      namespace: crossplane-system
+      name: aws-credentials
+      key: credentials
+---
+# ProviderConfig para ambiente Prod
+apiVersion: aws.upbound.io/v1beta1
+kind: ProviderConfig
+metadata:
+  name: aws-prod
+  labels:
+    environment: prod
     app.kubernetes.io/managed-by: argocd
     provider: aws
 spec:
