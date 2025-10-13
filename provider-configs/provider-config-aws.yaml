@@ -1,19 +1,18 @@
 ---
-# IMPORTANTE: Este arquivo é um template. Configure as credenciais AWS usando External Secrets ou Sealed Secrets
-# Nunca commite credentials em plain text!
-apiVersion: v1
-kind: Secret
-metadata:
-  name: aws-credentials
-  namespace: crossplane-system
-  labels:
-    app.kubernetes.io/managed-by: external-secrets
-type: Opaque
-stringData:
-  credentials: |
-    [default]
-    aws_access_key_id = ${AWS_ACCESS_KEY_ID}
-    aws_secret_access_key = ${AWS_SECRET_ACCESS_KEY}
+# ⚠️ IMPORTANTE: Secret 'aws-credentials' deve ser criado MANUALMENTE
+# 
+# NÃO incluímos o Secret neste arquivo por segurança.
+# 
+# Para criar o secret, execute:
+#
+# kubectl create secret generic aws-credentials \
+#   -n crossplane-system \
+#   --from-file=credentials=aws-creds.txt
+#
+# Para produção, veja opções em: AWS-IAM-SETUP.md
+# - External Secrets Operator
+# - Sealed Secrets
+# - ArgoCD Vault Plugin
 ---
 apiVersion: aws.upbound.io/v1beta1
 kind: ProviderConfig
