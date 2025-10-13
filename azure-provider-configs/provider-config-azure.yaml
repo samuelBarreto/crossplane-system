@@ -20,7 +20,7 @@ stringData:
 apiVersion: azure.upbound.io/v1beta1
 kind: ProviderConfig
 metadata:
-  name: azure-default
+  name: azure-hml
   labels:
     environment: shared
     app.kubernetes.io/managed-by: argocd

@@ -18,7 +18,7 @@
 apiVersion: aws.upbound.io/v1beta1
 kind: ProviderConfig
 metadata:
-  name: aws-default
+  name: aws-hlm
   labels:
     environment: shared
     app.kubernetes.io/managed-by: argocd
