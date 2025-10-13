@@ -20,6 +20,22 @@ kind: ProviderConfig
 metadata:
   name: aws-hlm
   labels:
+    environment: hml
+    app.kubernetes.io/managed-by: argocd
+    provider: aws
+spec:
+  credentials:
+    source: Secret
+    secretRef:
+      namespace: crossplane-system
+      name: aws-credentials
+      key: credentials
+---
+apiVersion: aws.upbound.io/v1beta1
+kind: ProviderConfig
+metadata:
+  name: aws-default
+  labels:
     environment: shared
     app.kubernetes.io/managed-by: argocd
     provider: aws
