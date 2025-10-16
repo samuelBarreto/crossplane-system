@@ -157,4 +157,18 @@ spec:
           readOnlyRootFilesystem: true
           runAsNonRoot: true
           runAsUser: 2000
+        volumeMounts:
+        - name: tls-server-certs
+          mountPath: /tls/server
+        - name: tls-client-certs
+          mountPath: /tls/client
+      volumes:
+      - name: tls-server-certs
+        secret:
+          secretName: crossplane-tls-server
+          optional: true
+      - name: tls-client-certs
+        secret:
+          secretName: crossplane-tls-client
+          optional: true
 
