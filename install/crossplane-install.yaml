@@ -121,6 +121,8 @@ spec:
         args:
         - core
         - start
+        - --tls-server-certs-dir=/tls/server
+        - --tls-client-certs-dir=/tls/client
         env:
         - name: POD_NAMESPACE
           valueFrom:
