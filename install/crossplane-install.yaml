@@ -117,7 +117,7 @@ spec:
       serviceAccountName: crossplane
       containers:
       - name: crossplane
-        image: xpkg.crossplane.io/crossplane/crossplane:v1.17.2
+        image: crossplane/crossplane:v1.14.5
         imagePullPolicy: IfNotPresent
         args:
         - core
