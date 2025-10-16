@@ -121,8 +121,6 @@ spec:
         args:
         - core
         - start
-        - --tls-server-certs-dir=/tls/server
-        - --tls-client-certs-dir=/tls/client
         env:
         - name: POD_NAMESPACE
           valueFrom:
@@ -156,21 +154,7 @@ spec:
           periodSeconds: 10
         securityContext:
           allowPrivilegeEscalation: false
-          readOnlyRootFilesystem: true
+          readOnlyRootFilesystem: false  # Precisa ser false para gerar TLS
           runAsNonRoot: true
           runAsUser: 2000
-        volumeMounts:
-        - name: tls-server-certs
-          mountPath: /tls/server
-        - name: tls-client-certs
-          mountPath: /tls/client
-      volumes:
-      - name: tls-server-certs
-        secret:
-          secretName: crossplane-tls-server
-          optional: true
-      - name: tls-client-certs
-        secret:
-          secretName: crossplane-tls-client
-          optional: true
 
