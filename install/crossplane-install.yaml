@@ -120,6 +120,8 @@ spec:
         args:
         - core
         - start
+        - --leader-election
+        - --args=core start
         #- --enable-composition-webhook-schema-validation
         #- --enable-composition-functions
         env:
