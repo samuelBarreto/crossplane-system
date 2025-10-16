@@ -120,7 +120,7 @@ spec:
         args:
         - core
         - start
-        - --enable-composition-webhook-schema-validation
+        #- --enable-composition-webhook-schema-validation
         - --enable-composition-functions
         env:
         - name: POD_NAMESPACE
