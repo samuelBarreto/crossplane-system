@@ -102,7 +102,6 @@ spec:
   selector:
     matchLabels:
       app: crossplane
-      release: crossplane
   strategy:
     type: RollingUpdate
     rollingUpdate:
