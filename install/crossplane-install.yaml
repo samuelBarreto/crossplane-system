@@ -117,13 +117,13 @@ spec:
       serviceAccountName: crossplane
       containers:
       - name: crossplane
-        image: xpkg.crossplane.io/crossplane/crossplane:v2.0.2
+        image: xpkg.crossplane.io/crossplane/crossplane:v1.17.2
         imagePullPolicy: IfNotPresent
         args:
         - core
         - start
-       # - --enable-composition-webhook-schema-validation
-       # - --enable-composition-functions
+        - --enable-composition-webhook-schema-validation
+        - --enable-composition-functions
         env:
         - name: POD_NAMESPACE
           valueFrom:
