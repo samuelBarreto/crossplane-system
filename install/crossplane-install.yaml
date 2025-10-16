@@ -102,6 +102,7 @@ spec:
   selector:
     matchLabels:
       app: crossplane
+      release: crossplane
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -111,17 +112,18 @@ spec:
     metadata:
       labels:
         app: crossplane
+        release: crossplane
     spec:
       serviceAccountName: crossplane
       containers:
       - name: crossplane
-        image: crossplane/crossplane:v1.14.5
+        image: xpkg.crossplane.io/crossplane/crossplane:v1.17.2
         imagePullPolicy: IfNotPresent
         args:
         - core
         - start
-        - --enable-composition-webhook-schema-validation
-        - --enable-composition-functions
+       # - --enable-composition-webhook-schema-validation
+       # - --enable-composition-functions
         env:
         - name: POD_NAMESPACE
           valueFrom:
