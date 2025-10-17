@@ -1,0 +1,5 @@
+# Ignorar subdiretórios para evitar duplicação
+# O arquivo provider-aws.yaml na raiz já contém todos os providers
+ec2/
+s3/
+
